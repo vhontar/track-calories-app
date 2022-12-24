@@ -3,6 +3,7 @@ package com.vhontar.trackcaloriesapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.vhontar.onboarding_presentation.welcome.screens.WelcomeScreen
 import com.vhontar.trackcaloriesapp.ui.theme.CaloryTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -10,7 +11,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CaloryTrackerTheme {
-
+                WelcomeScreen()
             }
         }
     }
