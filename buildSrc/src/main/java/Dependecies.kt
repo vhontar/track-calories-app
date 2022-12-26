@@ -40,6 +40,11 @@ object Compose {
     const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
 }
 
+object Coroutines {
+    const val version = "1.6.4"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+}
+
 object Google {
     private const val materialVersion = "1.7.0"
     const val material = "com.google.android.material:material:$materialVersion"

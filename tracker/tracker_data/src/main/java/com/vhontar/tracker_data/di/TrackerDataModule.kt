@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.vhontar.tracker_data.local.TrackerDatabase
 import com.vhontar.tracker_data.remote.OpenFoodApi
+import com.vhontar.tracker_data.repository.TrackerRepositoryImpl
+import com.vhontar.tracker_domain.repository.TrackerRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +23,7 @@ object TrackerDataModule {
 
     @Provides
     @Singleton
-    fun providesTrackerDatabase(@ApplicationContext context: Context): TrackerDatabase =
+    fun provideTrackerDatabase(@ApplicationContext context: Context): TrackerDatabase =
         Room.databaseBuilder(
             context,
             TrackerDatabase::class.java,
@@ -30,7 +32,7 @@ object TrackerDataModule {
 
     @Provides
     @Singleton
-    fun providesOpenFoodApi(client: OkHttpClient): OpenFoodApi = Retrofit.Builder()
+    fun provideOpenFoodApi(client: OkHttpClient): OpenFoodApi = Retrofit.Builder()
         .baseUrl(OpenFoodApi.BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create())
         .client(client)
@@ -39,9 +41,19 @@ object TrackerDataModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         })
         .build()
+
+    @Provides
+    @Singleton
+    fun provideTrackerRepository(
+        api: OpenFoodApi,
+        db: TrackerDatabase
+    ): TrackerRepository = TrackerRepositoryImpl(
+        dao = db.trackerDao,
+        api = api
+    )
 }
