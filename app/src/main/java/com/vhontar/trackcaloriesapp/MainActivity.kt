@@ -14,6 +14,8 @@ import androidx.navigation.compose.rememberNavController
 import com.vhontar.core.navigation.Route
 import com.vhontar.onboarding_presentation.age.AgeScreen
 import com.vhontar.onboarding_presentation.gender.GenderScreen
+import com.vhontar.onboarding_presentation.height.HeightScreen
+import com.vhontar.onboarding_presentation.weight.WeightScreen
 import com.vhontar.onboarding_presentation.welcome.WelcomeScreen
 import com.vhontar.trackcaloriesapp.navigation.navigate
 import com.vhontar.trackcaloriesapp.ui.theme.CaloryTrackerTheme
@@ -52,18 +54,24 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.HEIGHT) {
-
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.WEIGHT) {
-
-                        }
-                        composable(Route.NUTRIENT_GOAL) {
-
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.ACTIVITY) {
 
                         }
                         composable(Route.GOAL) {
+
+                        }
+                        composable(Route.NUTRIENT_GOAL) {
 
                         }
 
