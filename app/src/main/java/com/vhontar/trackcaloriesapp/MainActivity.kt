@@ -22,6 +22,7 @@ import com.vhontar.onboarding_presentation.weight.WeightScreen
 import com.vhontar.onboarding_presentation.welcome.WelcomeScreen
 import com.vhontar.trackcaloriesapp.navigation.navigate
 import com.vhontar.trackcaloriesapp.ui.theme.CaloryTrackerTheme
+import com.vhontar.tracker_presentation.overview.TrackerOverviewScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -83,7 +84,7 @@ class MainActivity : ComponentActivity() {
 
                         // tracker
                         composable(Route.TRACKER_OVERVIEW) {
-
+                            TrackerOverviewScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.SEARCH) {
 
