@@ -22,3 +22,19 @@ fun LocalDate.toDate(): Date {
 
     return calendar.time
 }
+
+fun LocalDate.plusDays(days: Int): LocalDate {
+    val calendar = Calendar.getInstance().apply {
+        time = toDate()
+    }
+    calendar.add(Calendar.DAY_OF_MONTH, days)
+    return calendar.time.toLocalDate()
+}
+
+fun LocalDate.minusDays(days: Int): LocalDate {
+    val calendar = Calendar.getInstance().apply {
+        time = toDate()
+    }
+    calendar.add(Calendar.DAY_OF_MONTH, -days)
+    return calendar.time.toLocalDate()
+}
