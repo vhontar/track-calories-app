@@ -75,7 +75,7 @@ class TrackerOverviewViewModel @Inject constructor(
                 state = state.copy(
                     meals = state.meals.map {
                         if (it.name == event.meal.name)
-                            it.copy(isExpanded = true)
+                            it.copy(isExpanded = !it.isExpanded)
                         else it
                     }
                 )
