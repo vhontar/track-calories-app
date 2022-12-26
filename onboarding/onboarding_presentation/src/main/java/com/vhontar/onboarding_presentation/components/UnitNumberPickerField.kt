@@ -1,50 +1,43 @@
 package com.vhontar.onboarding_presentation.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
-import com.vhontar.core_ui.LocalSpacing
 import com.vhontar.core_ui.spacing
 
 @Composable
-fun UnitTextField(
-    value: String,
-    onValueChange: (String) -> Unit,
+fun UnitNumberPickerField(
+    value: Int,
+    range: IntRange,
+    onValueChanged: (Int) -> Unit,
     unit: String,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle(
         color = MaterialTheme.colors.primaryVariant,
-        fontSize = 70.sp
-    ),
+        fontSize = 24.sp
+    )
 ) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.Center
     ) {
-        BasicTextField(
+        NumberPicker(
             value = value,
-            onValueChange = onValueChange,
+            range = range,
+            onValueChange = onValueChanged,
             textStyle = textStyle,
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number
-            ),
-            singleLine = true,
             modifier = Modifier
                 .width(IntrinsicSize.Min)
-                .alignBy(LastBaseline)
         )
         Spacer(modifier = Modifier.width(MaterialTheme.spacing.spaceSmall))
         Text(
             text = unit,
-            modifier = Modifier.alignBy(LastBaseline)
+            modifier = Modifier.align(Alignment.CenterVertically)
         )
     }
 }

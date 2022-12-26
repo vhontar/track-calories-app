@@ -17,6 +17,7 @@ import com.vhontar.onboarding_presentation.age.AgeScreen
 import com.vhontar.onboarding_presentation.gender.GenderScreen
 import com.vhontar.onboarding_presentation.goaltype.GoalTypeScreen
 import com.vhontar.onboarding_presentation.height.HeightScreen
+import com.vhontar.onboarding_presentation.nutrientgoal.NutrientGoalScreen
 import com.vhontar.onboarding_presentation.weight.WeightScreen
 import com.vhontar.onboarding_presentation.welcome.WelcomeScreen
 import com.vhontar.trackcaloriesapp.navigation.navigate
@@ -74,7 +75,10 @@ class MainActivity : ComponentActivity() {
                             GoalTypeScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.NUTRIENT_GOAL) {
-
+                            NutrientGoalScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
 
                         // tracker

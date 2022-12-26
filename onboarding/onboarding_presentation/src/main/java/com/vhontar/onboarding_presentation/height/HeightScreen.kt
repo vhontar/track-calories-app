@@ -15,7 +15,7 @@ import com.vhontar.core.R
 import com.vhontar.core.util.UiEvent
 import com.vhontar.core_ui.spacing
 import com.vhontar.onboarding_presentation.components.ActionButton
-import com.vhontar.onboarding_presentation.components.UnitTextField
+import com.vhontar.onboarding_presentation.components.UnitNumberPickerField
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -55,7 +55,7 @@ fun HeightScreen(
                 style = MaterialTheme.typography.h3
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.spaceMedium))
-            UnitTextField(
+            UnitNumberPickerField(
                 value = viewModel.height,
                 range = viewModel.heightRange,
                 onValueChanged = viewModel::onHeightEnter,
