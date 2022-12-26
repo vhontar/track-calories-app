@@ -17,21 +17,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HeightViewModel @Inject constructor(
-    private val preferences: Preferences,
-    private val filterOutDigits: FilterOutDigitsUseCase
+    private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var height by mutableStateOf("180")
+    var height by mutableStateOf(180)
         private set
 
-    fun onHeightEnter(height: String) {
-        if (height.length in 2..3) {
-            this.height = filterOutDigits(height)
-        }
+    val heightRange = 120..250
+
+    fun onHeightEnter(height: Int) {
+        this.height = height
     }
 
     fun onNextClick() = viewModelScope.launch {
-        val heightNumber = height.toIntOrNull() ?: kotlin.run {
+        if (!heightRange.contains(height)) {
             _uiEvent.send(
                 UiEvent.ShowSnackbar(
                     UiText.StringResource(R.string.error_height_cant_be_empty)
@@ -40,7 +39,7 @@ class HeightViewModel @Inject constructor(
             return@launch
         }
 
-        preferences.saveHeight(heightNumber)
+        preferences.saveHeight(height)
         _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
     }
 }

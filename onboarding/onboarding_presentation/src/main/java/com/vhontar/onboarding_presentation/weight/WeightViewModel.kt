@@ -19,17 +19,17 @@ class WeightViewModel @Inject constructor(
     private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var weight by mutableStateOf("80.0")
+    var weight by mutableStateOf(80)
         private set
 
-    fun onWeightEnter(weight: String) {
-        if (weight.length in 2..5) {
-            this.weight = weight
-        }
+    val weightRange = 30..250
+
+    fun onWeightEnter(weight: Int) {
+        this.weight = weight
     }
 
     fun onNextClick() = viewModelScope.launch {
-        val weightNumber = weight.toFloatOrNull() ?: kotlin.run {
+        if (!weightRange.contains(weight)) {
             _uiEvent.send(
                 UiEvent.ShowSnackbar(
                     UiText.StringResource(R.string.error_weight_cant_be_empty)
@@ -38,7 +38,7 @@ class WeightViewModel @Inject constructor(
             return@launch
         }
 
-        preferences.saveWeight(weightNumber)
+        preferences.saveWeight(weight)
         _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
     }
 }

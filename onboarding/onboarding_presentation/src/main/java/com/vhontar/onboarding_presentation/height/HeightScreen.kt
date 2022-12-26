@@ -57,6 +57,7 @@ fun HeightScreen(
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.spaceMedium))
             UnitTextField(
                 value = viewModel.height,
+                range = viewModel.heightRange,
                 onValueChanged = viewModel::onHeightEnter,
                 unit = stringResource(id = R.string.cm)
             )

@@ -22,9 +22,9 @@ class DefaultPreferences(
             .apply()
     }
 
-    override fun saveWeight(weight: Float) {
+    override fun saveWeight(weight: Int) {
         sharedPref.edit()
-            .putFloat(Preferences.KEY_WEIGHT, weight)
+            .putInt(Preferences.KEY_WEIGHT, weight)
             .apply()
     }
 

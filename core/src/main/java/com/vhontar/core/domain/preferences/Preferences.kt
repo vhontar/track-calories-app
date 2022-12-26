@@ -8,7 +8,7 @@ import com.vhontar.core.domain.models.UserInfo
 interface Preferences {
     fun saveGender(gender: Gender)
     fun saveAge(age: Int)
-    fun saveWeight(weight: Float)
+    fun saveWeight(weight: Int)
     fun saveHeight(height: Int)
     fun saveActivityLevel(level: ActivityLevel)
     fun saveGoalType(type: GoalType)
