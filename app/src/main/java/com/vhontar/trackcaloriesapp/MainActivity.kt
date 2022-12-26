@@ -12,8 +12,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vhontar.core.navigation.Route
+import com.vhontar.onboarding_presentation.activitylevel.ActivityLevelScreen
 import com.vhontar.onboarding_presentation.age.AgeScreen
 import com.vhontar.onboarding_presentation.gender.GenderScreen
+import com.vhontar.onboarding_presentation.goaltype.GoalTypeScreen
 import com.vhontar.onboarding_presentation.height.HeightScreen
 import com.vhontar.onboarding_presentation.weight.WeightScreen
 import com.vhontar.onboarding_presentation.welcome.WelcomeScreen
@@ -66,10 +68,10 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityLevelScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.GOAL) {
-
+                            GoalTypeScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.NUTRIENT_GOAL) {
 
