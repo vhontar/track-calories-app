@@ -1,4 +1,4 @@
-package com.vhontar.onboarding_presentation.welcome.components
+package com.vhontar.onboarding_presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

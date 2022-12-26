@@ -1,4 +1,4 @@
-package com.vhontar.onboarding_presentation.welcome.welcome
+package com.vhontar.onboarding_presentation.welcome
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -12,7 +12,7 @@ import com.vhontar.core.R
 import com.vhontar.core.navigation.Route
 import com.vhontar.core.util.UiEvent
 import com.vhontar.core_ui.spacing
-import com.vhontar.onboarding_presentation.welcome.components.ActionButton
+import com.vhontar.onboarding_presentation.components.ActionButton
 
 @Composable
 fun WelcomeScreen(

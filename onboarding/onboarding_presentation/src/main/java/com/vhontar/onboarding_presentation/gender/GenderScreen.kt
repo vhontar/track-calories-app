@@ -1,4 +1,4 @@
-package com.vhontar.onboarding_presentation.welcome.gender
+package com.vhontar.onboarding_presentation.gender
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -16,8 +16,8 @@ import com.vhontar.core_ui.spacing
 import kotlinx.coroutines.flow.collectLatest
 import com.vhontar.core.R
 import com.vhontar.core.domain.models.Gender
-import com.vhontar.onboarding_presentation.welcome.components.ActionButton
-import com.vhontar.onboarding_presentation.welcome.components.SelectableButton
+import com.vhontar.onboarding_presentation.components.ActionButton
+import com.vhontar.onboarding_presentation.components.SelectableButton
 
 @Composable
 fun GenderScreen(

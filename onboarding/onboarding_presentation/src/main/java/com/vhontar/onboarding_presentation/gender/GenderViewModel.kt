@@ -1,4 +1,4 @@
-package com.vhontar.onboarding_presentation.welcome.gender
+package com.vhontar.onboarding_presentation.gender
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

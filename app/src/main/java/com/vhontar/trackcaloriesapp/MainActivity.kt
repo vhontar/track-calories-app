@@ -12,9 +12,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vhontar.core.navigation.Route
-import com.vhontar.onboarding_presentation.welcome.age.AgeScreen
-import com.vhontar.onboarding_presentation.welcome.gender.GenderScreen
-import com.vhontar.onboarding_presentation.welcome.welcome.WelcomeScreen
+import com.vhontar.onboarding_presentation.age.AgeScreen
+import com.vhontar.onboarding_presentation.gender.GenderScreen
+import com.vhontar.onboarding_presentation.welcome.WelcomeScreen
 import com.vhontar.trackcaloriesapp.navigation.navigate
 import com.vhontar.trackcaloriesapp.ui.theme.CaloryTrackerTheme
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.vhontar.onboarding_presentation.welcome.components
+package com.vhontar.onboarding_presentation.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField

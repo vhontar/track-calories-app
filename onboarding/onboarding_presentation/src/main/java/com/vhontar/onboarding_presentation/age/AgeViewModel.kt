@@ -1,4 +1,4 @@
-package com.vhontar.onboarding_presentation.welcome.age
+package com.vhontar.onboarding_presentation.age
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -1,4 +1,4 @@
-package com.vhontar.onboarding_presentation.welcome.age
+package com.vhontar.onboarding_presentation.age
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -14,8 +14,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.vhontar.core.R
 import com.vhontar.core.util.UiEvent
 import com.vhontar.core_ui.spacing
-import com.vhontar.onboarding_presentation.welcome.components.ActionButton
-import com.vhontar.onboarding_presentation.welcome.components.UnitTextField
+import com.vhontar.onboarding_presentation.components.ActionButton
+import com.vhontar.onboarding_presentation.components.UnitTextField
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
