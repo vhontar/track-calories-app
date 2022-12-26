@@ -18,7 +18,7 @@ class ActivityLevelViewModel @Inject constructor(
     private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var selectedActivityLevel by mutableStateOf<ActivityLevel>(ActivityLevel.Medium)
+    var selectedActivityLevel by mutableStateOf(preferences.loadUserInfo().activityLevel)
         private set
 
     fun onActivityLevelClick(activityLevel: ActivityLevel) {
@@ -28,5 +28,9 @@ class ActivityLevelViewModel @Inject constructor(
     fun onNextClick() = viewModelScope.launch {
         preferences.saveActivityLevel(selectedActivityLevel)
         _uiEvent.send(UiEvent.Navigate(Route.GOAL))
+    }
+
+    fun onBackClick() = viewModelScope.launch {
+        _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
     }
 }

@@ -85,7 +85,11 @@ fun GoalTypeScreen(
                 )
             }
         }
-
+        ActionButton(
+            text = stringResource(id = R.string.back),
+            onClick = viewModel::onBackClick,
+            modifier = Modifier.align(Alignment.BottomStart)
+        )
         ActionButton(
             text = stringResource(id = R.string.next),
             onClick = viewModel::onNextClick,

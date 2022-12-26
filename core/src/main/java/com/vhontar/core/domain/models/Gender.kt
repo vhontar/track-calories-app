@@ -6,6 +6,7 @@ sealed class Gender(val name: String) {
 
     companion object {
         fun fromString(name: String?): Gender = when (name) {
+            null -> Male
             "male" -> Male
             "female" -> Female
             else -> throw IllegalArgumentException("Gender is not specified correctly")

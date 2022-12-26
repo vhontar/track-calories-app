@@ -3,7 +3,7 @@ package com.vhontar.core.domain.models
 data class UserInfo(
     val gender: Gender,
     val age: Int,
-    val weight: Float,
+    val weight: Int,
     val height: Int,
     val activityLevel: ActivityLevel,
     val goalType: GoalType,

@@ -18,7 +18,7 @@ class GenderViewModel @Inject constructor(
     private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var selectedGender by mutableStateOf<Gender>(Gender.Male)
+    var selectedGender by mutableStateOf(preferences.loadUserInfo().gender)
         private set
 
     fun onGenderClick(gender: Gender) {
@@ -28,5 +28,9 @@ class GenderViewModel @Inject constructor(
     fun onNextClick() = viewModelScope.launch {
         preferences.saveGender(selectedGender)
         _uiEvent.send(UiEvent.Navigate(Route.AGE))
+    }
+
+    fun onBackClick() = viewModelScope.launch {
+        _uiEvent.send(UiEvent.Navigate(Route.WELCOME))
     }
 }

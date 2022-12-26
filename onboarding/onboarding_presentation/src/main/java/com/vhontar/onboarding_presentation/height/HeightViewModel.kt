@@ -20,7 +20,7 @@ class HeightViewModel @Inject constructor(
     private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var height by mutableStateOf(180)
+    var height by mutableStateOf(loadDefaultHeight())
         private set
 
     val heightRange = 120..250
@@ -41,5 +41,14 @@ class HeightViewModel @Inject constructor(
 
         preferences.saveHeight(height)
         _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
+    }
+
+    fun onBackClick() = viewModelScope.launch {
+        _uiEvent.send(UiEvent.Navigate(Route.AGE))
+    }
+
+    private fun loadDefaultHeight(): Int {
+        val height = preferences.loadUserInfo().height
+        return if (height == -1) 180 else height
     }
 }

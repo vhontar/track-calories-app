@@ -18,7 +18,7 @@ class GoalTypeViewModel @Inject constructor(
     private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var selectedGoalType by mutableStateOf<GoalType>(GoalType.KeepWeight)
+    var selectedGoalType by mutableStateOf(preferences.loadUserInfo().goalType)
         private set
 
     fun onGoalTypeClick(goalType: GoalType) {
@@ -28,5 +28,9 @@ class GoalTypeViewModel @Inject constructor(
     fun onNextClick() = viewModelScope.launch {
         preferences.saveGoalType(selectedGoalType)
         _uiEvent.send(UiEvent.Navigate(Route.NUTRIENT_GOAL))
+    }
+
+    fun onBackClick() = viewModelScope.launch {
+        _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
     }
 }

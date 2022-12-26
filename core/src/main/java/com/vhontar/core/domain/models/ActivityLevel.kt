@@ -7,6 +7,7 @@ sealed class ActivityLevel(val name: String) {
 
     companion object {
         fun fromString(name: String?): ActivityLevel = when (name) {
+            null -> Medium
             "low" -> Low
             "medium" -> Medium
             "high" -> High

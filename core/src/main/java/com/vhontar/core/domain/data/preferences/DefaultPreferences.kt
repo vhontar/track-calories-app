@@ -67,7 +67,7 @@ class DefaultPreferences(
     override fun loadUserInfo(): UserInfo {
         val age = sharedPref.getInt(Preferences.KEY_AGE, -1)
         val height = sharedPref.getInt(Preferences.KEY_HEIGHT, -1)
-        val weight = sharedPref.getFloat(Preferences.KEY_WEIGHT, -1f)
+        val weight = sharedPref.getInt(Preferences.KEY_WEIGHT, -1)
         val carbRatio = sharedPref.getFloat(Preferences.KEY_CARB_RATIO, -1f)
         val proteinRatio = sharedPref.getFloat(Preferences.KEY_PROTEIN_RATIO, -1f)
         val fatRatio = sharedPref.getFloat(Preferences.KEY_FAT_RATIO, -1f)

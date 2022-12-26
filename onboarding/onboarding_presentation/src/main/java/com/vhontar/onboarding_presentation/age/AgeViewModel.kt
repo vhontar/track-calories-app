@@ -19,7 +19,7 @@ class AgeViewModel @Inject constructor(
     private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var age by mutableStateOf(20)
+    var age by mutableStateOf(loadDefaultAge())
         private set
 
     val ageRange = 18..120
@@ -40,5 +40,14 @@ class AgeViewModel @Inject constructor(
 
         preferences.saveAge(age)
         _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+    }
+
+    fun onBackClick() = viewModelScope.launch {
+        _uiEvent.send(UiEvent.Navigate(Route.GENDER))
+    }
+
+    private fun loadDefaultAge(): Int {
+        val age = preferences.loadUserInfo().age
+        return if (age == -1) 20 else age
     }
 }

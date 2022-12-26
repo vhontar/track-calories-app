@@ -19,7 +19,7 @@ class WeightViewModel @Inject constructor(
     private val preferences: Preferences
 ) : BaseViewModel() {
 
-    var weight by mutableStateOf(80)
+    var weight by mutableStateOf(loadDefaultWeight())
         private set
 
     val weightRange = 30..250
@@ -40,5 +40,14 @@ class WeightViewModel @Inject constructor(
 
         preferences.saveWeight(weight)
         _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
+    }
+
+    fun onBackClick() = viewModelScope.launch {
+        _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+    }
+
+    private fun loadDefaultWeight(): Int {
+        val weight = preferences.loadUserInfo().weight
+        return if (weight == -1) 80 else weight
     }
 }
