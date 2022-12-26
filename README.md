@@ -3,7 +3,7 @@
 
 ### Tech stack
 
-- **Clean architecture** for architecture
+- **Clean architecture**
 - **Multi module architecture** for faster builds and code separation
 - **MVVM with Use Cases** for presentation layer
 - **Kotlin** for all code
@@ -17,6 +17,19 @@
 - **Retrofit + OkHttp** for network requests
 - **Moshi** for parsing JSONs
 - **Coil** for images loading
+
+
+### Modules
+
+- [**core**](core) for core(shared) classes between all modules
+- [**core-ui**](core-ui) for core(shared) UI-related classes between all modules
+- [**tracker**](tracker) for tracker overview / searching foods
+  - [**tracker-data**](tracker/tracker_data) data layer (local, remote)
+  - [**tracker-domain**](tracker/tracker_domain) domain layer (use cases, repositories)
+  - [**tracker-presentation**](tracker/tracker_presentation) presentation layer (Composables, Screens, ViewModels)
+- [**onboarding**](onboarding) for onboarding steps to setup users data and goals
+  - [**onboarding-domain**](onboarding/onboarding_domain) domain layer (use cases, repositories)
+  - [**onboarding-presentation**](onboarding/onboarding_presentation) presentation layer (Composables, Screens, ViewModels)
 
 
 ### Features
