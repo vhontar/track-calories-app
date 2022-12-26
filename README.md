@@ -6,17 +6,14 @@
 - **Clean architecture** for architecture
 - **Multi module architecture** for faster builds and code separation
 - **MVVM with Use Cases** for presentation layer
-
 - **Kotlin** for all code
 - **Coroutines** and **Kotlin Flow** for async work
 - **Gradle Kotlin DSL** for build scripts configuration
-
 - **Jetpack** (Compose, Navigation, ViewModel) for
   presentation layer
 - **Material Components** for styling UI components and transitions
 - **Room** for storing data
 - **Hilt** for DI
-
 - **Retrofit + OkHttp** for network requests
 - **Moshi** for parsing JSONs
 - **Coil** for images loading
