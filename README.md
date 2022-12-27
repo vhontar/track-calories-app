@@ -43,6 +43,5 @@
 - Measure your daily calories goal depends on inputted data
 
 ### Screenshots
-![Tracker Overview](/screenshots/screen1.png "Tracker Overview")
-![Search for foods](/screenshots/screen2.png "Search for foods")
-![Track food](/screenshots/screen3.png "Track food")
+
+![Tracker Overview](/screenshots/screen1.png "Tracker Overview") ![Search for foods](/screenshots/screen2.png "Search for foods") ![Track food](/screenshots/screen3.png "Track food")
