@@ -66,10 +66,12 @@ fun SearchScreen(
         Spacer(modifier = Modifier.height(MaterialTheme.spacing.spaceMedium))
         SearchTextField(
             text = state.query,
+            shouldShowHint = state.isHintVisible,
             onValueChange = {
                 viewModel.onEvent(SearchEvent.OnQueryChange(it))
             },
             onSearch = {
+                keyboardController?.hide()
                 viewModel.onEvent(SearchEvent.OnSearch)
             },
             onFocusChange = {
@@ -93,6 +95,7 @@ fun SearchScreen(
                         ))
                     },
                     onTrack = {
+                        keyboardController?.hide()
                         viewModel.onEvent(SearchEvent.OnTrackFoodClick(
                             food = trackableFood.food,
                             mealType = MealType.fromString(mealName),
@@ -106,8 +109,7 @@ fun SearchScreen(
     }
 
     Box(
-        modifier = Modifier
-            .fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         when {
