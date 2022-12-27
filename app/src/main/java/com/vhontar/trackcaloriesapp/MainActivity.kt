@@ -3,10 +3,14 @@ package com.vhontar.trackcaloriesapp
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -39,14 +43,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val startDestination = if (preferences.loadShouldShowOnboarding()) {
-            Route.WELCOME
-        } else Route.TRACKER_OVERVIEW
+        val shouldShowOnboarding = preferences.loadShouldShowOnboarding()
 
         setContent {
             CaloryTrackerTheme {
                 val navController = rememberNavController()
                 val scaffoldState = rememberScaffoldState()
+
+                var startDestination by remember {
+                    mutableStateOf(
+                        if (shouldShowOnboarding) {
+                            Route.WELCOME
+                        } else Route.TRACKER_OVERVIEW
+                    )
+                }
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -111,6 +121,7 @@ class MainActivity : ComponentActivity() {
 
                         // tracker
                         composable(Route.TRACKER_OVERVIEW) {
+                            startDestination = Route.TRACKER_OVERVIEW
                             TrackerOverviewScreen(
                                 onNavigateToSearch = { mealName, localDate ->
                                     navController.navigate(
