@@ -8,7 +8,7 @@ data class NutrientGoalState(
     val fatRatioAsText: String = "30"
 ) {
     constructor(carbsRatio: Float, proteinRatio: Float, fatRatio: Float): this(
-        carbsRatioAsText = if (carbsRatio == -1f) {
+        carbsRatioAsText = if (carbsRatio != -1f) {
             (carbsRatio * 100).roundToInt().toString()
         } else "40",
         proteinRatioAsText = if (proteinRatio != -1f) {

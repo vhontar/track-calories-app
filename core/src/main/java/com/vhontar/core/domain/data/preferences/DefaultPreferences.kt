@@ -46,7 +46,7 @@ class DefaultPreferences(
             .apply()
     }
 
-    override fun saveCarbRatio(ratio: Float) {
+    override fun saveCarbsRatio(ratio: Float) {
         sharedPref.edit()
             .putFloat(Preferences.KEY_CARB_RATIO, ratio)
             .apply()
@@ -68,7 +68,7 @@ class DefaultPreferences(
         val age = sharedPref.getInt(Preferences.KEY_AGE, -1)
         val height = sharedPref.getInt(Preferences.KEY_HEIGHT, -1)
         val weight = sharedPref.getInt(Preferences.KEY_WEIGHT, -1)
-        val carbRatio = sharedPref.getFloat(Preferences.KEY_CARB_RATIO, -1f)
+        val carbsRatio = sharedPref.getFloat(Preferences.KEY_CARB_RATIO, -1f)
         val proteinRatio = sharedPref.getFloat(Preferences.KEY_PROTEIN_RATIO, -1f)
         val fatRatio = sharedPref.getFloat(Preferences.KEY_FAT_RATIO, -1f)
 
@@ -89,7 +89,7 @@ class DefaultPreferences(
             height = height,
             activityLevel = activityLevel,
             goalType = goalType,
-            carbRatio = carbRatio,
+            carbsRatio = carbsRatio,
             proteinRatio = proteinRatio,
             fatRatio = fatRatio
         )

@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -13,6 +14,7 @@ import com.vhontar.core.util.UiEvent
 import com.vhontar.core_ui.spacing
 import com.vhontar.tracker_presentation.overview.components.*
 import com.vhontar.core.R
+import kotlinx.coroutines.flow.collect
 
 @Composable
 fun TrackerOverviewScreen(
@@ -21,6 +23,15 @@ fun TrackerOverviewScreen(
 ) {
     val state = viewModel.state
     val context = LocalContext.current
+
+    LaunchedEffect(key1 = Unit) {
+        viewModel.uiEvent.collect { event ->
+            when (event) {
+                is UiEvent.Navigate -> onNavigate(event)
+                else -> Unit
+            }
+        }
+    }
 
     LazyColumn(
         modifier = Modifier

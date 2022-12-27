@@ -55,7 +55,7 @@ class NutrientGoalViewModel @Inject constructor(
 
                 when(result) {
                     is ValidateNutrientsUseCase.Result.Success -> {
-                        preferences.saveCarbRatio(result.carbsRatio)
+                        preferences.saveCarbsRatio(result.carbsRatio)
                         preferences.saveProteinRatio(result.proteinRatio)
                         preferences.saveFatRatio(result.fatRatio)
 
@@ -81,7 +81,7 @@ class NutrientGoalViewModel @Inject constructor(
     private fun loadDefaultNutrientsAsState(): NutrientGoalState {
         val userInfo = preferences.loadUserInfo()
         return NutrientGoalState(
-            carbsRatio = userInfo.carbRatio,
+            carbsRatio = userInfo.carbsRatio,
             proteinRatio = userInfo.proteinRatio,
             fatRatio = userInfo.fatRatio
         )
