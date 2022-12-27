@@ -44,4 +44,4 @@
 
 ### Screenshots
 
-![Tracker Overview](/screenshots/screen1.png "Tracker Overview") ![Search for foods](/screenshots/screen2.png "Search for foods") ![Track food](/screenshots/screen3.png "Track food")
+<img src="/screenshots/screen1.png" width="425"/> <img src="/screenshots/screen2.png" width="425"/> <img src="/screenshots/screen3.png" width="425"/>
