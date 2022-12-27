@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vhontar.core.R
 import com.vhontar.core.domain.preferences.Preferences
-import com.vhontar.core.navigation.Route
 import com.vhontar.core.util.UiEvent
 import com.vhontar.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -44,11 +43,11 @@ class HeightViewModel @Inject constructor(
         }
 
         preferences.saveHeight(height)
-        _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
+        _uiEvent.send(UiEvent.Next)
     }
 
     fun onBackClick() = viewModelScope.launch {
-        _uiEvent.send(UiEvent.Navigate(Route.AGE))
+        _uiEvent.send(UiEvent.Back)
     }
 
     private fun loadDefaultHeight(): Int {

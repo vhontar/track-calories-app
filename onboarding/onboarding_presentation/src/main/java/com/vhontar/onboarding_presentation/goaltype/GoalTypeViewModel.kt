@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vhontar.core.domain.models.GoalType
 import com.vhontar.core.domain.preferences.Preferences
-import com.vhontar.core.navigation.Route
 import com.vhontar.core.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -32,10 +31,10 @@ class GoalTypeViewModel @Inject constructor(
 
     fun onNextClick() = viewModelScope.launch {
         preferences.saveGoalType(selectedGoalType)
-        _uiEvent.send(UiEvent.Navigate(Route.NUTRIENT_GOAL))
+        _uiEvent.send(UiEvent.Next)
     }
 
     fun onBackClick() = viewModelScope.launch {
-        _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
+        _uiEvent.send(UiEvent.Back)
     }
 }

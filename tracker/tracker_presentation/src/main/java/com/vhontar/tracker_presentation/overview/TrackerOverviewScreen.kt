@@ -14,24 +14,15 @@ import com.vhontar.core.util.UiEvent
 import com.vhontar.core_ui.spacing
 import com.vhontar.tracker_presentation.overview.components.*
 import com.vhontar.core.R
-import kotlinx.coroutines.flow.collect
+import com.vhontar.core.domain.models.LocalDate
 
 @Composable
 fun TrackerOverviewScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNavigateToSearch: (String, LocalDate) -> Unit,
     viewModel: TrackerOverviewViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
     val context = LocalContext.current
-
-    LaunchedEffect(key1 = Unit) {
-        viewModel.uiEvent.collect { event ->
-            when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
-                else -> Unit
-            }
-        }
-    }
 
     LazyColumn(
         modifier = Modifier
@@ -84,7 +75,10 @@ fun TrackerOverviewScreen(
                                 meal.name.asString(context)
                             ),
                             onClick = {
-                                viewModel.onEvent(TrackerOverviewEvent.OnAddFoodClick(meal))
+                                onNavigateToSearch(
+                                    meal.name.asString(context),
+                                    state.selectedDate
+                                )
                             },
                             modifier = Modifier.fillMaxWidth()
                         )

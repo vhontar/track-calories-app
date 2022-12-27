@@ -15,15 +15,14 @@ import com.vhontar.core.R
 import com.vhontar.core.util.UiEvent
 import com.vhontar.core_ui.spacing
 import com.vhontar.onboarding_presentation.components.ActionButton
-import com.vhontar.onboarding_presentation.components.UnitNumberPickerField
 import com.vhontar.onboarding_presentation.components.UnitTextField
-import com.vhontar.onboarding_presentation.height.HeightViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun NutrientGoalScreen(
     scaffoldState: ScaffoldState,
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
+    onBackClick: () -> Unit,
     viewModel: NutrientGoalViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
@@ -31,7 +30,8 @@ fun NutrientGoalScreen(
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collectLatest { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Next -> onNextClick()
+                is UiEvent.Back -> onBackClick()
                 is UiEvent.ShowSnackbar -> {
                     scaffoldState.snackbarHostState.showSnackbar(
                         message = event.message.asString(context)

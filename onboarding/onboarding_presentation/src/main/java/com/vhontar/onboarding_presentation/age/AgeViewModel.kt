@@ -9,7 +9,6 @@ import com.vhontar.core.domain.preferences.Preferences
 import com.vhontar.core.util.UiEvent
 import com.vhontar.core.util.UiText
 import com.vhontar.core.R
-import com.vhontar.core.navigation.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -44,11 +43,11 @@ class AgeViewModel @Inject constructor(
         }
 
         preferences.saveAge(age)
-        _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+        _uiEvent.send(UiEvent.Next)
     }
 
     fun onBackClick() = viewModelScope.launch {
-        _uiEvent.send(UiEvent.Navigate(Route.GENDER))
+        _uiEvent.send(UiEvent.Back)
     }
 
     private fun loadDefaultAge(): Int {

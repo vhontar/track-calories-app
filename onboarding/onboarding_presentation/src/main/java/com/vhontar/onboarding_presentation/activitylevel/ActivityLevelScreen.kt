@@ -21,13 +21,15 @@ import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun ActivityLevelScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
+    onBackClick: () -> Unit,
     viewModel: ActivityLevelViewModel = hiltViewModel()
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collectLatest { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Next -> onNextClick()
+                is UiEvent.Back -> onBackClick()
                 else -> Unit
             }
         }

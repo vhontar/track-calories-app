@@ -1,4 +1,4 @@
-package com.vhontar.core.navigation
+package com.vhontar.trackcaloriesapp.navigation
 
 object Route {
 

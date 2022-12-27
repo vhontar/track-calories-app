@@ -21,13 +21,15 @@ import com.vhontar.onboarding_presentation.components.SelectableButton
 
 @Composable
 fun GenderScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
+    onBackClick: () -> Unit,
     viewModel: GenderViewModel = hiltViewModel()
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collectLatest { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Next -> onNextClick()
+                is UiEvent.Back -> onBackClick()
                 else -> Unit
             }
         }

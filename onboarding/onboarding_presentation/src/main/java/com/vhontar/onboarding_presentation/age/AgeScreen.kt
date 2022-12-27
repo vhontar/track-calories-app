@@ -21,7 +21,8 @@ import kotlinx.coroutines.flow.collectLatest
 @Composable
 fun AgeScreen(
     scaffoldState: ScaffoldState,
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
+    onBackClick: () -> Unit,
     viewModel: AgeViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
@@ -29,7 +30,8 @@ fun AgeScreen(
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collectLatest { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Next -> onNextClick()
+                is UiEvent.Back -> onBackClick()
                 is UiEvent.ShowSnackbar -> {
                     scaffoldState.snackbarHostState.showSnackbar(
                         message = event.message.asString(context)

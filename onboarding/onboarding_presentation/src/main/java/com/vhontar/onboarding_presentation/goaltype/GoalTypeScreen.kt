@@ -12,24 +12,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.vhontar.core.R
-import com.vhontar.core.domain.models.ActivityLevel
 import com.vhontar.core.domain.models.GoalType
 import com.vhontar.core.util.UiEvent
 import com.vhontar.core_ui.spacing
-import com.vhontar.onboarding_presentation.activitylevel.ActivityLevelViewModel
 import com.vhontar.onboarding_presentation.components.ActionButton
 import com.vhontar.onboarding_presentation.components.SelectableButton
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun GoalTypeScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
+    onBackClick: () -> Unit,
     viewModel: GoalTypeViewModel = hiltViewModel()
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.uiEvent.collectLatest { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Next -> onNextClick()
+                is UiEvent.Back -> onBackClick()
                 else -> Unit
             }
         }
